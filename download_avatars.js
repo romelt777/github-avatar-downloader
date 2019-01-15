@@ -28,9 +28,9 @@ function getRepoContributors(repoOwner, repoName, cb) {
   };
 
   request(options, function(err, res, body) {
-    var picurl = JSON.parse(body);
+    var result = JSON.parse(body);
   //  console.log("TEST" , result.length);
-    cb(err, picurl);
+    cb(err, result);
   });
 };
 
