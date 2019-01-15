@@ -9,13 +9,12 @@ var fs = require('fs');
 
 // //command line arguments
 if(process.argv[3] === undefined || process.argv[2] === undefined){
-    console.log("Error: Please provide another argument.")
+    console.log("Error: Please provide another argument.");
     process.exit(-1);
   }
 var owner = process.argv[2].split(" ");
-// console.log(owner);
 var repo = process.argv[3];
-// console.log(repo);
+
 
 //importing github token
 var gToken = require('./secret.js');
@@ -46,7 +45,7 @@ function downloadImageByURL(url, filePath) {
 
   request.get(url)
     .on('error', function (err) {
-    console.log("Something is wrong !")
+    console.log("Something is wrong !");
     throw err;
     })
     .on('response', function (response) {
