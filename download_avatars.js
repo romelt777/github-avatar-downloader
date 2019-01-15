@@ -37,8 +37,16 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
 function downloadImageByURL(url, filePath) {
 
-
-}
+  request.get(url)
+    .on('error', function (err) {
+    console.log("Something is wrong !")
+    throw err;
+    })
+    .on('response', function (response) {
+      console.log('Response Status Code: ', response.statusCode);
+    })
+    .pipe(fs.createWriteStream(filePath));
+};
 
 
 //hard coding the call of function getRepoContributors
@@ -50,3 +58,6 @@ getRepoContributors("jquery", "jquery", function(err, result){
 });
 
 
+
+//hard code test
+downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "./avatars/kvirani.jpg");
