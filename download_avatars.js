@@ -7,7 +7,9 @@ var request = require('request');
 //importing file system package
 var fs = require('fs');
 
-// console.log('Welcome to the GitHub Avatar Downloader!');
+// //command line arguments
+var owner = process.argv[2].split(" ");
+var repo = process.argv[3].split(" ");
 
 //importing github token
 var gToken = require('./secret.js');
@@ -48,12 +50,10 @@ function downloadImageByURL(url, filePath) {
 };
 
 
-//hard coding the call of function getRepoContributors
-getRepoContributors("jquery", "jquery", function(err, result){
+
+getRepoContributors(owner, repo, function(err, result){
   console.log("Errors:", err);
   for (let i = 0; i < result.length ; i++) {
-    console.log(result[i]['login']);
-    console.log(result[i]['avatar_url']);
     downloadImageByURL(result[i]['avatar_url'], "./avatars/" + result[i]['login']+ ".jpg");
     console.log("downloaded " + i + " avatar");
   };
