@@ -3,6 +3,10 @@
 //importing request package
 var request = require('request');
 
+
+//importing file system package
+var fs = require('fs');
+
 // console.log('Welcome to the GitHub Avatar Downloader!');
 
 //importing github token
@@ -31,6 +35,12 @@ function getRepoContributors(repoOwner, repoName, cb) {
 };
 
 
+function downloadImageByURL(url, filePath) {
+
+
+}
+
+
 //hard coding the call of function getRepoContributors
 getRepoContributors("jquery", "jquery", function(err, result){
   console.log("Errors:", err);
@@ -38,3 +48,5 @@ getRepoContributors("jquery", "jquery", function(err, result){
     console.log(result[i]['avatar_url']);
   };
 });
+
+
