@@ -17,9 +17,6 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
     //adding headers : allows more info to be passed between client and server
     headers: {
-      // 'User-Agent': 'request'
-      //'GITHUB_TOKEN': gToken.GITHUB_TOKEN
-      // 'Authorization': 'Basic ' + gToken
       'User-Agent': gToken
 
     }
@@ -27,7 +24,8 @@ function getRepoContributors(repoOwner, repoName, cb) {
   };
 
   request(options, function(err, res, body) {
-    cb(err, body);
+    var result = JSON.parse(body);
+    cb(err, result);
   });
 };
 
